@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+<!--    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor">
+        <property name="requiredAnnotationType" value="pl.sda.Mandatory"/>
+    </bean>-->
+
+    <bean id="person1" class="pl.sda.Person">
+        <property name="firstName" value="Adam" />
+        <property name="lastName" value="Nowak" />
+        <property name="address" value="Wawa" />
+        <property name="age" value="29" />
+    </bean>
+
+    <bean id="student1" class="pl.sda.Student" >
+        <property name="firstName" value="#{person1.firstName}" />
+        <property name="lastName" value="#{person1.lastName}" />
+        <property name="age" value="#{person1.age}" />
+        <property name="address" value="#{person1.address}" />
+        <property name="indexNumber" value="120120" />
+    </bean>
+
+
+
+    <context:annotation-config />
+    <context:component-scan base-package="pl.sda"/>
+
+</beans>
